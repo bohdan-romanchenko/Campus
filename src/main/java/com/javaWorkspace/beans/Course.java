@@ -11,7 +11,7 @@ import java.util.List;
  * Date : 6/12/16.
  */
 @Entity
-@Table(name = "COURSE")
+@Table(name = "JW_COURSE")
 public class Course {
 
     @Id
@@ -37,4 +37,15 @@ public class Course {
         this.studentList = studentList;
         this.teacherList = teacherList;
     }
+
+    public Course() {
+    }
 }
+
+//    CREATE TABLE INFORMATION_SCHEMA.JW_COURSE
+//        (
+//        course_id INT AUTO_INCREMENT NOT NULL,
+//        course_name VARCHAR(255) NOT NULL,
+//        course_year VARCHAR(255) NOT NULL
+//        );
+//        CREATE UNIQUE INDEX "JW_COURSE_course_id_uindex" ON INFORMATION_SCHEMA.JW_COURSE (course_id);

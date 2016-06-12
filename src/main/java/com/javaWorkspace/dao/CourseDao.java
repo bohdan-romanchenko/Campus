@@ -3,13 +3,11 @@ package com.javaWorkspace.dao;
 import com.javaWorkspace.beans.Course;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 /**
  * Created by Bohdan Romanchenko (nadman)
  * Date : 6/12/16.
  */
-@Repository
 public class CourseDao {
 
     @Autowired

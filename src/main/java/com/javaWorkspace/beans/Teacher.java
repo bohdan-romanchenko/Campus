@@ -11,7 +11,7 @@ import java.util.List;
  * Date : 6/12/16.
  */
 @Entity
-@Table(name = "TEACHER")
+@Table(name = "JW_TEACHER")
 public class Teacher {
 
     @Id
@@ -27,7 +27,7 @@ public class Teacher {
     @Column(name = "teacher_education")
     @Getter @Setter private String education;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "teacherList")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Getter @Setter private List<Course> courseList;
 
     public Teacher(String nameTeacher, String education, List<Course> courseList) {
@@ -39,3 +39,11 @@ public class Teacher {
     public Teacher() {
     }
 }
+
+//    CREATE TABLE INFORMATION_SCHEMA.JW_TEACHER
+//        (
+//        teacher_id INT AUTO_INCREMENT NOT NULL,
+//        teacher_name VARCHAR(255) NOT NULL,
+//        teacher_education VARCHAR(500)
+//        );
+//        CREATE UNIQUE INDEX "JW_TEACHER_teacher_id_uindex" ON INFORMATION_SCHEMA.JW_TEACHER (teacher_id);
