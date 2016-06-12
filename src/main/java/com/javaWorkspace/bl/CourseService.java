@@ -16,7 +16,7 @@ public class CourseService {
 
     @Transactional
     public Course createCourse(Course course){
-        Integer id = courseDao.createCourse(course);
+        Long id = courseDao.createCourse(course);
         System.out.println("Course " + id + " : " + course.getNameCourse() + " - created");
         return course;
     }
@@ -24,6 +24,11 @@ public class CourseService {
     public void deleteCourse(Course course){
         courseDao.deleteCourse(course);
         System.out.println("Course " + course.getNameCourse() + " - deleted");
+    }
+
+    @Transactional
+    public Course getCourse(Long id){
+        return courseDao.getCourse(id);
     }
 
 }

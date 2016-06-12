@@ -13,8 +13,8 @@ public class StudentDao {
     @Autowired
     SessionFactory sessionFactory;
 
-    public Integer createStudent(Student student){
-        return (Integer) sessionFactory.getCurrentSession().save(student);
+    public Long createStudent(Student student){
+        return (Long) sessionFactory.getCurrentSession().save(student);
     }
 
     public void deleteStudent(Student student){

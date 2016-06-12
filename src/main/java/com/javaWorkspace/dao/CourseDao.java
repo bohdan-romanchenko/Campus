@@ -13,11 +13,15 @@ public class CourseDao {
     @Autowired
     SessionFactory sessionFactory;
 
-    public Integer createCourse(Course course){
-        return (Integer) sessionFactory.getCurrentSession().save(course);
+    public Long createCourse(Course course){
+        return (Long) sessionFactory.getCurrentSession().save(course);
     }
 
     public void deleteCourse(Course course){
         sessionFactory.getCurrentSession().delete(course);
+    }
+
+    public Course getCourse(Long id){
+        return sessionFactory.getCurrentSession().get(Course.class, id);
     }
 }

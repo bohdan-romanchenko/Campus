@@ -17,7 +17,7 @@ public class StudentService {
 
     @Transactional
     public Student createStudent(Student student){
-        Integer id = studentDao.createStudent(student);
+        Long id = studentDao.createStudent(student);
         System.out.println("Student " + id + " : " + student.getNameStudent() + " - created");
         return student;
     }

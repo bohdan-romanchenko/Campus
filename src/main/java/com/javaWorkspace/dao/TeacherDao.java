@@ -13,8 +13,8 @@ public class TeacherDao {
     @Autowired
     SessionFactory sessionFactory;
 
-    public Integer createTeacher(Teacher teacher){
-        return (Integer) sessionFactory.getCurrentSession().save(teacher);
+    public Long createTeacher(Teacher teacher){
+        return (Long) sessionFactory.getCurrentSession().save(teacher);
     }
 
     public void deleteTeacher(Teacher teacher){

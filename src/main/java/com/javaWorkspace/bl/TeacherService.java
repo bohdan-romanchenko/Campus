@@ -16,7 +16,7 @@ public class TeacherService {
 
     @Transactional
     public Teacher createTeacher(Teacher student){
-        Integer id = teacherDao.createTeacher(student);
+        Long id = teacherDao.createTeacher(student);
         System.out.println("Teacher " + id + " : " + student.getNameTeacher() + " - created");
         return student;
     }
@@ -25,4 +25,5 @@ public class TeacherService {
         teacherDao.deleteTeacher(student);
         System.out.println("Teacher " + student.getNameTeacher() + " - deleted");
     }
+
 }
