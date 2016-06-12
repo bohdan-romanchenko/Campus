@@ -26,4 +26,7 @@ public class TeacherService {
         System.out.println("Teacher " + student.getNameTeacher() + " - deleted");
     }
 
+    public Teacher getTeacher(Long id){
+        return teacherDao.getTeacher(id);
+    }
 }

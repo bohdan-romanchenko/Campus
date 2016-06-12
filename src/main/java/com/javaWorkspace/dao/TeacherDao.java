@@ -20,4 +20,8 @@ public class TeacherDao {
     public void deleteTeacher(Teacher teacher){
         sessionFactory.getCurrentSession().delete(teacher);
     }
+
+    public Teacher getTeacher(Long id){
+        return sessionFactory.getCurrentSession().get(Teacher.class, id);
+    }
 }

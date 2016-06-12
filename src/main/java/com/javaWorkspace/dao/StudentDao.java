@@ -21,4 +21,7 @@ public class StudentDao {
         sessionFactory.getCurrentSession().delete(student);
     }
 
+    public Student getStudent(Long id){
+        return sessionFactory.getCurrentSession().get(Student.class, id);
+    }
 }
