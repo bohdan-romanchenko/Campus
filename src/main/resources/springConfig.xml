@@ -19,6 +19,21 @@
         </property>
     </bean>
 
+    <bean id="courseDao" class="com.javaWorkspace.dao.CourseDao"/>
+    <bean id="courseService" class="com.javaWorkspace.bl.CourseService">
+        <property name="courseDao" ref="courseDao"/>
+    </bean>
+
+    <bean id="studentDao" class="com.javaWorkspace.dao.StudentDao"/>
+    <bean id="studentService" class="com.javaWorkspace.bl.StudentService">
+        <property name="studentDao" ref="studentDao"/>
+    </bean>
+
+    <bean id="teacherDao" class="com.javaWorkspace.dao.TeacherDao"/>
+    <bean id="teacherService" class="com.javaWorkspace.bl.TeacherService">
+        <property name="teacherDao" ref="teacherDao"/>
+    </bean>
+
     <bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <!--????????--><property name="driverClassName" value="com.h2database.jdbc.Driver"/>
         <property name="url" value="jdbc:h2:http://127.0.1.1:8082/campus"/>

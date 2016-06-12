@@ -22,13 +22,16 @@ public class Student {
     private Long id;
 
     @Column(name = "student_name", nullable = false)
-    @Getter @Setter private String nameCourse;
+    @Getter @Setter private String nameStudent;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "studentList")
     @Getter @Setter private List<Course> courseList;
 
-    public Student(String nameCourse, List<Course> courseList) {
-        this.nameCourse = nameCourse;
+    public Student(String nameStudent, List<Course> courseList) {
+        this.nameStudent = nameStudent;
         this.courseList = courseList;
+    }
+
+    public Student() {
     }
 }

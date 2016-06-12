@@ -22,7 +22,7 @@ public class Teacher {
     private Long id;
 
     @Column(name = "teacher_name", nullable = false)
-    @Getter @Setter private String nameCourse;
+    @Getter @Setter private String nameTeacher;
 
     @Column(name = "teacher_education")
     @Getter @Setter private String education;
@@ -30,9 +30,12 @@ public class Teacher {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "teacherList")
     @Getter @Setter private List<Course> courseList;
 
-    public Teacher(String nameCourse, String education, List<Course> courseList) {
-        this.nameCourse = nameCourse;
+    public Teacher(String nameTeacher, String education, List<Course> courseList) {
+        this.nameTeacher = nameTeacher;
         this.education = education;
         this.courseList = courseList;
+    }
+
+    public Teacher() {
     }
 }
