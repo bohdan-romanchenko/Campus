@@ -43,6 +43,7 @@
             <value>
                 hibernate.dialect=org.hibernate.dialect.H2Dialect
                 hibernate.default_schema=INFORMATION_SCHEMA
+                hibernate.hbm2ddl.auto=create
                 hibernate.show_sql=true
             </value>
         </property>
