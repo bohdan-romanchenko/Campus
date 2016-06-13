@@ -24,7 +24,7 @@ public class Course {
     @Getter @Setter private String nameCourse;
 
     @Column(name = "course_year", nullable = false)
-    @Getter @Setter private String year;
+    @Getter @Setter private Integer year;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "JW_STUDENT_COURSE_MARK",
@@ -36,7 +36,7 @@ public class Course {
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy = "courseList")
     @Getter @Setter private List<Teacher> teacherList;
 
-    public Course(String nameCourse, String year, Map<Integer, Student> studentList, List<Teacher> teacherList) {
+    public Course(String nameCourse, Integer year, Map<Integer, Student> studentList, List<Teacher> teacherList) {
         this.nameCourse = nameCourse;
         this.year = year;
         this.studentList = studentList;
@@ -46,11 +46,3 @@ public class Course {
     public Course() {
     }
 }
-
-//    CREATE TABLE INFORMATION_SCHEMA.JW_COURSE
-//        (
-//        course_id INT AUTO_INCREMENT NOT NULL,
-//        course_name VARCHAR(255) NOT NULL,
-//        course_year VARCHAR(255) NOT NULL
-//        );
-//        CREATE UNIQUE INDEX "JW_COURSE_course_id_uindex" ON INFORMATION_SCHEMA.JW_COURSE (course_id);

@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -36,10 +35,3 @@ public class Student {
     public Student() {
     }
 }
-
-//    CREATE TABLE INFORMATION_SCHEMA.JW_STUDENT
-//        (
-//        student_id INT AUTO_INCREMENT NOT NULL,
-//        student_name VARCHAR(255) NOT NULL
-//        );
-//        CREATE UNIQUE INDEX "JW_STUDENT_student_id_uindex" ON INFORMATION_SCHEMA.JW_STUDENT (student_id);

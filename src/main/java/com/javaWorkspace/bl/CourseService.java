@@ -5,6 +5,9 @@ import com.javaWorkspace.dao.CourseDao;
 import lombok.Setter;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Bohdan Romanchenko (nadman)
  * Date : 6/12/16.
@@ -31,4 +34,25 @@ public class CourseService {
         return courseDao.getCourse(id);
     }
 
+    @Transactional
+    public Double getMiddleMarkPerCourse(Course course) throws ArithmeticException{
+        Double sumOfAllMarks = 0d;
+        ArrayList<Integer> allMarksPerCourse = courseDao.getAllMarksPerCourse(course);
+        for (Integer a : allMarksPerCourse)
+            sumOfAllMarks += a;
+        return sumOfAllMarks / allMarksPerCourse.size();
+    }
+
+    @Transactional
+    public Double getMiddleMarkPerYear(Integer year) throws ArithmeticException {
+        Double sumOfAllMarks = 0d;
+        List<Course> allCourses = courseDao.getAllCourses();
+        ArrayList<Integer> allMarksPerCourse = new ArrayList<Integer>();
+        for (Course course : allCourses)
+            if (course.getYear().equals(year))
+                allMarksPerCourse.addAll(courseDao.getAllMarksPerCourse(course));
+        for (Integer a : allMarksPerCourse)
+            sumOfAllMarks += a;
+        return sumOfAllMarks / allMarksPerCourse.size();
+    }
 }
