@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Bohdan Romanchenko (nadman)
@@ -25,13 +26,17 @@ public class Course {
     @Column(name = "course_year", nullable = false)
     @Getter @Setter private String year;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy = "courseList")
-    @Getter @Setter private List<Student> studentList;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "JW_STUDENT_COURSE_MARK",
+            joinColumns = @JoinColumn(name = "COURSE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "STUDENT_ID"))
+    @MapKeyJoinColumn(name = "MARK")
+    @Getter @Setter private Map<Integer, Student> studentList;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy = "courseList")
     @Getter @Setter private List<Teacher> teacherList;
 
-    public Course(String nameCourse, String year, List<Student> studentList, List<Teacher> teacherList) {
+    public Course(String nameCourse, String year, Map<Integer, Student> studentList, List<Teacher> teacherList) {
         this.nameCourse = nameCourse;
         this.year = year;
         this.studentList = studentList;

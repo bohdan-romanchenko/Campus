@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Bohdan Romanchenko (nadman)
@@ -25,9 +26,9 @@ public class Student {
     @Getter @Setter private String nameStudent;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @Getter @Setter private List<Course> courseList;
+    @Getter @Setter private Map<Integer, Course> courseList;
 
-    public Student(String nameStudent, List<Course> courseList) {
+    public Student(String nameStudent, Map<Integer, Course> courseList) {
         this.nameStudent = nameStudent;
         this.courseList = courseList;
     }
