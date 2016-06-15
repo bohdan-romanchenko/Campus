@@ -29,14 +29,14 @@ public class Course {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "JW_STUDENT_COURSE_MARK",
             joinColumns = @JoinColumn(name = "COURSE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "STUDENT_ID"))
-    @MapKeyJoinColumn(name = "MARK")
-    @Getter @Setter private Map<Integer, Student> studentList;
+            inverseJoinColumns = @JoinColumn(name = "MARK"))
+    @MapKeyJoinColumn(name = "STUDENT_ID")
+    @Getter @Setter private Map<Student, Mark> studentList;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, mappedBy = "courseList")
     @Getter @Setter private List<Teacher> teacherList;
 
-    public Course(String nameCourse, Integer year, Map<Integer, Student> studentList, List<Teacher> teacherList) {
+    public Course(String nameCourse, Integer year, Map<Student, Mark> studentList, List<Teacher> teacherList) {
         this.nameCourse = nameCourse;
         this.year = year;
         this.studentList = studentList;

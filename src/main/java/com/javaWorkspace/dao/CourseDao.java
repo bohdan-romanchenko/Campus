@@ -30,11 +30,4 @@ public class CourseDao {
     public List<Course> getAllCourses(){
         return sessionFactory.getCurrentSession().createCriteria(Course.class).list();
     }
-
-    public ArrayList<Integer> getAllMarksPerCourse(Course course){
-        ArrayList<Integer> returnList = new ArrayList<Integer>();
-        Set<Integer> marks = course.getStudentList().keySet();
-        for (Integer mark : marks) returnList.add(mark);
-        return returnList;
-    }
 }

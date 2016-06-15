@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,9 +26,9 @@ public class Student {
     @Getter @Setter private String nameStudent;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @Getter @Setter private Map<Integer, Course> courseList;
+    @Getter @Setter private Map<Course, Mark> courseList;
 
-    public Student(String nameStudent, Map<Integer, Course> courseList) {
+    public Student(String nameStudent, Map<Course, Mark> courseList) {
         this.nameStudent = nameStudent;
         this.courseList = courseList;
     }

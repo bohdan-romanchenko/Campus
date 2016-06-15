@@ -1,12 +1,15 @@
 package com.javaWorkspace.bl;
 
 import com.javaWorkspace.beans.Course;
+import com.javaWorkspace.beans.Mark;
 import com.javaWorkspace.dao.CourseDao;
 import lombok.Setter;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Bohdan Romanchenko (nadman)
@@ -34,11 +37,18 @@ public class CourseService {
         return courseDao.getCourse(id);
     }
 
+    private ArrayList<Double> getAllMarksPerCourse(Course course){
+        ArrayList<Double> returnList = new ArrayList<Double>();
+        Collection<Mark> marks = course.getStudentList().values();
+        for (Mark mark : marks) returnList.add(mark.getValue());
+        return returnList;
+    }
+
     @Transactional
     public Double getMiddleMarkPerCourse(Course course) throws ArithmeticException{
         Double sumOfAllMarks = 0d;
-        ArrayList<Integer> allMarksPerCourse = courseDao.getAllMarksPerCourse(course);
-        for (Integer a : allMarksPerCourse)
+        ArrayList<Double> allMarksPerCourse = getAllMarksPerCourse(course);
+        for (Double a : allMarksPerCourse)
             sumOfAllMarks += a;
         return sumOfAllMarks / allMarksPerCourse.size();
     }
@@ -47,11 +57,11 @@ public class CourseService {
     public Double getMiddleMarkPerYear(Integer year) throws ArithmeticException {
         Double sumOfAllMarks = 0d;
         List<Course> allCourses = courseDao.getAllCourses();
-        ArrayList<Integer> allMarksPerCourse = new ArrayList<Integer>();
+        ArrayList<Double> allMarksPerCourse = new ArrayList<Double>();
         for (Course course : allCourses)
             if (course.getYear().equals(year))
-                allMarksPerCourse.addAll(courseDao.getAllMarksPerCourse(course));
-        for (Integer a : allMarksPerCourse)
+                allMarksPerCourse.addAll(getAllMarksPerCourse(course));
+        for (Double a : allMarksPerCourse)
             sumOfAllMarks += a;
         return sumOfAllMarks / allMarksPerCourse.size();
     }
